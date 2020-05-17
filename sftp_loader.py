@@ -11,7 +11,8 @@ transport.connect(username=user, password=pswd)
 
 sftp = paramiko.SFTPClient.from_transport(transport)
 
-print(sftp.listdir(path='./Export'))
+ex_ls = sftp.listdir(path='./Export')
+print(ex_ls)
 
 sftp.close()
 transport.close()
