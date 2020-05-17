@@ -11,8 +11,16 @@ transport.connect(username=user, password=pswd)
 
 sftp = paramiko.SFTPClient.from_transport(transport)
 
-ex_ls = sftp.listdir(path='./Export')
-print(ex_ls)
+ex_ls = sftp.listdir(path='./Import')
+print(len(ex_ls))
+
+def finder(sub_str):
+    return [file for file in ex_ls if sub_str in file]
+
+e_dupes = finder('Email_Duplicate_Suppression')
+brokers = finder('Brokers_to_Email')
+locations = finder('Supreme_Locations')
+# print(e_dupes)
 
 sftp.close()
 transport.close()
